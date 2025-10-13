@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>D</title>
+<style>
+  body {
+    margin: 0;
+    font-family: Party Confetti; 
+    background-color: #1e2540;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+  }
+
+  .age {
+    font-size: 4em;
+    color: gold;
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.9);
+    margin-top: 40px;
+    animation: bounce 1s infinite alternate;
+  }
+
+  h1 {
+    margin-top: 20px;
+    font-size: 2.5em;
+    color: #d189b3;
+    animation: fadeIn 2s ease-in-out;
+    margin-bottom: 50px; 
+  }
+
+  .birthday-message {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: gold;
+    text-shadow: 0 0 15px gold, 0 0 30px orange, 0 0 45px gold;
+    opacity: 0;
+    margin-top: 40px;
+    animation: sparkle 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes sparkle {
+    from { text-shadow: 0 0 10px gold, 0 0 20px orange; }
+    to { text-shadow: 0 0 30px gold, 0 0 60px orange; }
+  }
+
+  .tap-btn {
+    background: linear-gradient(45deg, gold, orange);
+    color: #1e2540;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 35px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    transition: transform 0.2s, box-shadow 0.3s;
+  }
+
+  .tap-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+  }
+
+  .cake {
+    position: relative;
+    width: 200px;
+    margin: 60px auto 0;
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .layer {
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(-50px);
+    animation: dropLayer 0.6s ease forwards;
+    margin-top: 5px;
+  }
+
+  .layer.bottom {
+    width: 200px;
+    height: 45px;
+    background: linear-gradient(to bottom, #e57373, #d64b4b);
+    box-shadow: 0 5px 0 #a93b3b;
+  }
+  .layer.mid1 {
+    width: 170px;
+    height: 40px;
+    background: linear-gradient(to bottom, #f08080, #e57373);
+    box-shadow: 0 5px 0 #b95b5b;
+  }
+  .layer.mid2 {
+    width: 150px;
+    height: 35px;
+    background: linear-gradient(to bottom, #ffb6b9, #f4978e);
+    box-shadow: 0 5px 0 #c97968;
+  }
+  .layer.top {
+    width: 120px;
+    height: 30px;
+    background: linear-gradient(to bottom, #ffe4e1, #f8bfbf);
+    box-shadow: 0 5px 0 #d89090;
+  }
+
+  @keyframes dropLayer {
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .candles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 0px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+
+  .candle {
+    width: 10px;
+    height: 30px;
+    background: #fff5d7;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  .flame {
+    width: 10px;
+    height: 15px;
+    background: radial-gradient(circle, gold, orange);
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+    left: 0;
+    animation: flicker 0.3s infinite alternate;
+  }
+
+  @keyframes flicker {
+    from { transform: scale(1); opacity: 1; }
+    to { transform: scale(0.8); opacity: 0.8; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes bounce {
+    to { transform: translateY(-10px); }
+  }
+
+  .balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #f0e6d2;
+    animation: floatUp 6s ease-in forwards;
+  }
+
+  .balloon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: white;
+    left: 50%;
+    bottom: -40px;
+    transform: translateX(-50%);
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+  }
+
+  .star {
+    position: fixed;
+    top: 0;
+    width: 8px;
+    height: 8px;
+    background: transparent;
+    animation: twinkle linear infinite;
+  }
+
+  .star::before,
+  .star::after {
+    content: "";
+    position: absolute;
+    background: gold;
+    border-radius: 50%;
+  }
+
+  .star::before {
+    width: 8px;
+    height: 2px;
+    top: 3px;
+    left: 0;
+  }
+
+  .star::after {
+    width: 2px;
+    height: 8px;
+    left: 3px;
+    top: 0;
+  }
+
+  @keyframes twinkle {
+    0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="age">23 it is!</div>
+  <h1>Happy Birthday D💌</h1>
+
+  <button class="tap-btn" id="startBtn">TAP (Caution: calories ahead!)</button>
+
+  <div class="cake" id="cake">
+    <div class="candles">
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+      <div class="candle"><div class="flame"></div></div>
+    </div>
+    <div class="layer top"></div>
+    <div class="layer mid2"></div>
+    <div class="layer mid1"></div>
+    <div class="layer bottom"></div>
+  </div>
+
+  <div class="birthday-message" id="birthdayMsg">Officially old enough to know better, young enough to do it anyway ahaha</div>
+
+  <script>
+    const cake = document.getElementById("cake");
+    const startBtn = document.getElementById("startBtn");
+    const layers = document.querySelectorAll(".layer");
+    const candles = document.querySelector(".candles");
+    const birthdayMsg = document.getElementById("birthdayMsg");
+
+    startBtn.addEventListener("click", () => {
+      startBtn.style.display = "none";
+      cake.style.opacity = 1;
+
+      // Drop bottom to top
+      const orderedLayers = Array.from(layers).reverse();
+      orderedLayers.forEach((layer, index) => {
+        layer.style.animationDelay = `${1 + index * 0.8}s`;
+      });
+
+      candles.style.animationDelay = `${1 + orderedLayers.length * 0.8}s`;
+
+      setTimeout(() => {
+        birthdayMsg.style.opacity = 1;
+      }, 3000);
+
+      createBalloons();
+      createStars();
+    });
+
+    function createBalloons() {
+      const colors = ["#f0e6d2", "#d6c1a6", "#f5deb3", "#fff", "#bfa878"];
+      for (let i = 0; i < 8; i++) {
+        const balloon = document.createElement("div");
+        balloon.classList.add("balloon");
+        balloon.style.left = `${Math.random() * 100}vw`;
+        balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        balloon.style.animationDelay = `${Math.random() * 2}s`;
+        document.body.appendChild(balloon);
+        setTimeout(() => balloon.remove(), 6000);
+      }
+    }
+
+    function createStars() {
+      for (let i = 0; i < 60; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.animationDuration = `${3 + Math.random() * 3}s`;
+        star.style.animationDelay = `${Math.random() * 4}s`;
+        document.body.appendChild(star);
+        setTimeout(() => star.remove(), 7000);
+      }
+    }
+  </script>
+</body>
+</html>
